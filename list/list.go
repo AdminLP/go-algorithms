@@ -64,6 +64,26 @@ func Has(value interface{}, list *List) bool {
 	}
 }
 
+func Get(value interface{}, list *List) *Item {
+	if list.head == nil {
+		return nil
+	}
+
+	current := list.First()
+
+	for {
+		if current.value == value {
+			return current
+		}
+
+		if current.next != nil {
+			current = current.next
+		} else {
+			return nil
+		}
+	}
+}
+
 func Remove(value interface{}, list *List) *List {
 	if list.head == nil {
 		return list
